@@ -1,0 +1,94 @@
+---
+title: Welcome to Lorenzo Otieno Documentation
+description: An overview of the Lorenzo Otieno Documentation platform, designed as a default space for organizing and managing project documentation efficiently.
+---
+
+## Platform Overview
+
+Lorenzo Otieno Documentation provides a centralized space to organize, manage, and publish your project documentation. You create structured pages, embed code examples, and collaborate seamlessly with your team. This default documentation hub supports MDX for rich, interactive content including components like cards, steps, and tabs.
+
+<Columns cols={3}>
+  <Card title="Interactive Components" icon="components" href="/docs/components">
+    Build engaging docs with `<Steps>`, `<Tabs>`, and `<Callout>` elements.
+  </Card>
+  <Card title="Version Control" icon="git-branch" href="/docs/versioning">
+    Track changes and maintain version history effortlessly.
+  </Card>
+  <Card title="Search & Navigation" icon="search" href="/docs/search">
+    Find content quickly with full-text search and intuitive sidebar navigation.
+  </Card>
+</Columns>
+
+## Key Benefits
+
+You gain efficiency through customizable themes, real-time previews, and seamless integrations. Compare benefits across user roles using the tabs below.
+
+<Tabs>
+  <Tab title="Developers" icon="code">
+    Embed executable code snippets and API references directly in your docs.
+    
+    <Callout kind="tip">
+      Use `CodeGroup` for multi-language examples to reach broader audiences.
+    </Callout>
+  </Tab>
+  <Tab title="Product Managers" icon="layout" href="#">
+    Organize roadmaps, changelogs, and feature specs in one collaborative space.
+  </Tab>
+  <Tab title="Teams" icon="users">
+    Enable role-based access and comments for streamlined reviews.
+  </Tab>
+</Tabs>
+
+| Benefit | Description | Impact |
+|---------|-------------|--------|
+| Fast Publishing | Deploy changes in seconds | Reduces documentation lag |
+| Customizable UI | Brand with your colors (e.g., `#3B82F6`) | Matches your product identity |
+| Analytics | Track page views | Optimize content strategy |
+
+## Quick Start
+
+Set up your documentation space in minutes. Follow these steps to create your first page.
+
+<Steps>
+  <Step title="Create Account" icon="user-plus">
+    Sign up at the dashboard and verify your email.
+  </Step>
+  <Step title="Initialize Project" icon="folder-plus">
+    Run the setup command in your terminal.
+    
+    <CodeGroup tabs="npm,yarn">
+      ```bash
+      npm create lorenzo-docs@latest my-project
+      ```
+      ```bash
+      yarn create lorenzo-docs my-project
+      ```
+    </CodeGroup>
+  </Step>
+  <Step title="Add First Page" icon="file-plus">
+    Edit `introduction.mdx` with your YAML frontmatter and content.
+  </Step>
+  <Step title="Preview & Deploy" icon="rocket">
+    Start the dev server: `npm run dev`, then deploy with `npm run deploy`.
+  </Step>
+</Steps>
+
+<Expandable title="Advanced Configuration" default-open="false">
+  Customize your site by editing `lorenzo.config.js`:
+  
+  ```javascript
+  export default {
+    brandColor: '#3B82F6',
+    nav: [
+      { title: 'Home', href: '/' },
+      { title: 'API', href: '/api' }
+    ]
+  };
+  ```
+  
+  Integrate with GitHub for automatic deployments on push.
+</Expandable>
+
+<Callout kind="success">
+  Ready to dive deeper? Explore the [components guide](/docs/components) next.
+</Callout>

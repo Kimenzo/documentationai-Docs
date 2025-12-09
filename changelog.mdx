@@ -1,0 +1,136 @@
+---
+title: Changelog
+description: A record of updates, new features, and improvements to the Lorenzo Otieno Documentation platform.
+---
+
+## Overview
+
+Track all updates to the Lorenzo Otieno Documentation platform here. You receive new features, bug fixes, and performance improvements with each release. Review the latest changes below to understand enhancements and prepare for upgrades.
+
+<Callout kind="info">
+  Subscribe to our RSS feed or GitHub notifications to stay informed about new releases.
+</Callout>
+
+## Recent Releases
+
+Review the most recent versions with detailed changelogs.
+
+<Update label="2024-10-15" description="v1.2.0" tags={["feature", "improvement"]}>
+
+## New Features
+
+- Added support for custom brand colors, including `#3B82F6` as the default blue.
+- Introduced `<Video>` and `<Iframe>` components for richer media embeds in your docs.
+- Enabled Mermaid diagram rendering directly in code blocks (no JSX wrapper needed).
+
+## Improvements
+
+- Enhanced MDX parsing to better handle nested code blocks with 4 backticks.
+- Optimized rendering speed for pages with multiple `<Tabs>` and `<Columns>` components.
+
+</Update>
+
+<Update label="2024-09-20" description="v1.1.0" tags={["feature", "bugfix"]}>
+
+## New Features
+
+- New `<ParamField>` and `<ResponseField>` components for API documentation.
+- Added `tags` prop to `<Update>` for filtering changelogs by type.
+
+## Bug Fixes
+
+- Fixed parsing errors from unescaped `{` and `}` in prose text.
+- Resolved heading hierarchy issues when skipping from H2 to H4.
+
+</Update>
+
+<Update label="2024-08-10" description="v1.0.0" tags={["breaking", "feature"]}>
+
+## Breaking Changes
+
+- Removed deprecated `<Mermaid>` JSX component; use code blocks only.
+
+## New Features
+
+- Core MDX components: `<Steps>`, `<CodeGroup>`, `<Callout>`, and more.
+- Full support for YAML frontmatter with `title` and `description`.
+
+## Initial Setup
+
+- Bootstrap your docs with the default template.
+
+</Update>
+
+## Version Navigation
+
+<Columns cols={3}>
+  <Card title="Latest (v1.2.0)" icon="zap" href="#recent-releases">
+    Cutting-edge features and fixes.
+  </Card>
+  <Card title="v1.1.0" icon="package" href="#recent-releases">
+    API components and parsing improvements.
+  </Card>
+  <Card title="v1.0.0" icon="rocket" href="#recent-releases">
+    Initial platform launch.
+  </Card>
+</Columns>
+
+## Upcoming Changes
+
+<ExpandableGroup>
+  <Expandable title="v1.3.0 Preview (Q4 2024)" default-open="false">
+    Plan for these enhancements:
+    - Real-time collaboration editing.
+    - AI-powered search across docs.
+    - Advanced theming with CSS variables.
+  </Expandable>
+</ExpandableGroup>
+
+## How to Upgrade
+
+Follow these steps to update your Lorenzo Otieno Documentation instance.
+
+<Steps>
+  <Step title="Backup Your Docs" icon="database">
+    Save your current `docs/` folder to avoid data loss.
+  </Step>
+  <Step title="Update Package" icon="download">
+    Use your preferred package manager.
+    <CodeGroup tabs="npm,yarn,pnpm">
+```bash
+npm install lorenzo-otieno-docs@latest
+```
+
+```bash
+yarn add lorenzo-otieno-docs@latest
+```
+
+```bash
+pnpm add lorenzo-otieno-docs@latest
+```
+    </CodeGroup>
+  </Step>
+  <Step title="Rebuild and Deploy" icon="rocket">
+    Run `npm run build` and deploy to your hosting provider.
+  </Step>
+</Steps>
+
+<Callout kind="tip">
+  Test upgrades in a staging environment first. Check the `<Update>` tags for any breaking changes.
+</Callout>
+
+## Staying Updated
+
+Choose your preferred method to follow changes.
+
+<Tabs>
+  <Tab title="GitHub Releases" icon="github">
+    Visit the [releases page](https://github.com/lorenzo-otieno/docs/releases) for download links and notes.
+  </Tab>
+  <Tab title="RSS Feed" icon="rss">
+    Add `/changelog.xml` to your feed reader for automatic updates.
+  </Tab>
+  <Tab title="Email Newsletter" icon="mail">
+    Sign up at [lorenzo-otieno.com/newsletter](https://lorenzo-otieno.com/newsletter) for monthly summaries.
+  </Tab>
+</Tabs>

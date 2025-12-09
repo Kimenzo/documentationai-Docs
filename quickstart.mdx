@@ -1,0 +1,113 @@
+---
+title: Quick Start Guide
+description: Get up and running with your documentation space quickly, from account registration to publishing your first document.
+---
+
+## Get Started in Minutes
+
+Lorenzo Otieno Documentation provides a complete space to organize, edit, and publish your project docs. Follow these steps to create your account, set up a project space, and publish your first document.
+
+<Callout kind="tip">
+  New users get instant access to a free tier with unlimited public docs and basic collaboration features.
+</Callout>
+
+## Step-by-Step Setup
+
+Use these sequential steps to launch your documentation space.
+
+<Steps>
+  <Step title="Register Your Account" icon="user-plus">
+    Visit the [Lorenzo Otieno signup page](https://lorenzo-otieno.com/signup) and create your account.
+
+    Choose your authentication method:
+
+    <Tabs>
+      <Tab title="Email" icon="mail">
+        Enter your email address and set a strong password. Verify via the confirmation link sent to your inbox.
+      </Tab>
+      <Tab title="Google" icon="chrome">
+        Click "Sign up with Google" for one-click access using your Google account.
+      </Tab>
+      <Tab title="GitHub" icon="github">
+        Authorize with GitHub to import repos directly into your doc spaces.
+      </Tab>
+    </Tabs>
+  </Step>
+
+  <Step title="Create a Project Space" icon="folder-plus">
+    After login, click **New Space** from the dashboard.
+
+    Provide a name like "My Project Docs" and select visibility (public or private).
+
+    ```bash
+    # Optional: Import from GitHub repo
+    git clone https://github.com/yourusername/my-project.git
+    # Then upload via drag-and-drop or connect repo
+    ```
+
+    Your space appears in the sidebar, ready for docs.
+  </Step>
+
+  <Step title="Navigate and Edit Basics" icon="edit-3">
+    Open your space and create **New Document**.
+
+    Use the visual editor for markdown and MDX components.
+
+    <CodeGroup tabs="Markdown,MDX">
+    ```markdown
+    # Welcome Document
+
+    ## Features
+    - Fast editing
+    - Live preview
+    - Component support
+    ```
+    ```jsx
+    import { Callout } from '@lorenzo-otieno/ui';
+
+    <Callout kind="success">
+      Your first MDX doc renders perfectly!
+    </Callout>
+    ```
+    </CodeGroup>
+  </Step>
+
+  <Step title="Publish Your Doc" icon="globe">
+    Click **Publish** in the editor toolbar.
+
+    Customize SEO title, description, and slug (e.g., `/quickstart`).
+
+    Share the live URL: `https://lorenzo-otieno.com/yourspace/quickstart`
+  </Step>
+</Steps>
+
+## Next Steps
+
+Explore these key areas to enhance your documentation.
+
+<Columns cols={3}>
+  <Card title="Customize Themes" icon="palette" href="/docs/themes">
+    Apply your brand colors like `#3B82F6` and custom layouts.
+  </Card>
+  <Card title="Add Collaboration" icon="users" href="/docs/collaboration">
+    Invite team members and enable real-time editing.
+  </Card>
+  <Card title="Version Control" icon="git-branch" href="/docs/git-integration">
+    Connect GitHub for seamless sync and history.
+  </Card>
+</Columns>
+
+## Frequently Asked Questions
+
+<ExpandableGroup>
+  <Expandable title="How do I add custom domains?" default-open="true">
+    Go to Space Settings {`>`} Domains and add your domain after configuring DNS records.
+  </Expandable>
+  <Expandable title="What file types are supported?">
+    Markdown (`.mdx`, `.md`), images (PNG, SVG, GIF), and embeds (YouTube, Figma).
+  </Expandable>
+</ExpandableGroup>
+
+<Callout kind="success">
+  Congratulations! You've published your first document. Dive into advanced features next.
+</Callout>
