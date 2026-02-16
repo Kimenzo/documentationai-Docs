@@ -1,20 +1,23 @@
 ---
 title: Customization and Settings
-description: Learn how to tailor your documentation space, including branding and access controls, to match your project's needs.
+description: >-
+  Learn how to tailor your documentation space, including branding and access
+  controls, to match your project's needs.
 ---
-
 ## Overview
 
 Customize Lorenzo Otieno Documentation to align with your project's identity and workflow. Adjust brand colors, manage user permissions, and integrate with external tools. Start with simple configuration changes to see immediate results.
 
-<Columns cols={3}>
-  <Card title="Brand Colors" icon="palette" href="#brand-colors">
+<Columns cols="3">
+  <Card title="Brand Colors" href="#brand-colors" icon="palette" horizontal="false">
     Set primary and accent colors using CSS variables.
   </Card>
-  <Card title="User Permissions" icon="users" href="#user-permissions">
+
+  <Card title="User Permissions" href="#user-permissions" icon="users" horizontal="false">
     Control access levels for team members.
   </Card>
-  <Card title="Integrations" icon="plug" href="#integrations">
+
+  <Card title="Integrations" href="#integrations" icon="plug" horizontal="false">
     Connect with GitHub, Slack, and more.
   </Card>
 </Columns>
@@ -24,18 +27,20 @@ Customize Lorenzo Otieno Documentation to align with your project's identity and
 Define your brand colors to match your project's visual identity. Use the primary color `#3B82F6` as a starting point and override CSS variables in your theme file.
 
 <Steps>
-  <Step title="Locate Theme File" icon="file">
+  <Step title="Locate Theme File" icon="file" title-type="p">
     Navigate to `docs/theme.config.js`.
   </Step>
-  <Step title="Update Colors" icon="edit-3">
+
+  <Step title="Update Colors" icon="edit-3" title-type="p">
     Modify the `colors` object with your hex values.
   </Step>
-  <Step title="Apply Changes" icon="refresh-cw">
+
+  <Step title="Apply Changes" icon="refresh-cw" title-type="p">
     Restart your dev server: `npm run dev`.
   </Step>
 </Steps>
 
-<CodeGroup tabs="JavaScript,TypeScript">
+<CodeGroup show-lines="true" tabs={[]}>
   ```javascript
   /** @type {import('@lorenzo-otieno/docs').ThemeConfig} */
   const config = {
@@ -48,6 +53,7 @@ Define your brand colors to match your project's visual identity. Use the primar
 
   export default config;
   ```
+
   ```typescript
   import type { ThemeConfig } from '@lorenzo-otieno/docs';
 
@@ -63,7 +69,7 @@ Define your brand colors to match your project's visual identity. Use the primar
   ```
 </CodeGroup>
 
-<Callout kind="tip">
+<Callout kind="tip" collapsed="false">
   Choose colors with good contrast ratios for readability. Test with tools like WebAIM Contrast Checker.
 </Callout>
 
@@ -71,16 +77,17 @@ Define your brand colors to match your project's visual identity. Use the primar
 
 Manage who can view, edit, or administer your documentation space. Permissions apply at the space and page levels.
 
-| Role          | View Pages | Edit Content | Manage Users | Delete Pages |
-|---------------|------------|--------------|--------------|--------------|
-| Viewer        | ✅        | ❌           | ❌           | ❌           |
-| Editor        | ✅        | ✅           | ❌           | ❌           |
-| Admin         | ✅        | ✅           | ✅           | ✅           |
+| Role   | View Pages | Edit Content | Manage Users | Delete Pages |
+| ------ | ---------- | ------------ | ------------ | ------------ |
+| Viewer | ✅          | ❌            | ❌            | ❌            |
+| Editor | ✅          | ✅            | ❌            | ❌            |
+| Admin  | ✅          | ✅            | ✅            | ✅            |
 
 <Tabs>
   <Tab title="Add Editor" icon="user-plus">
     Invite users via email and assign the `editor` role in the dashboard.
   </Tab>
+
   <Tab title="Restrict Page" icon="lock">
     Set page-specific permissions under **Settings > Access**.
   </Tab>
@@ -112,11 +119,12 @@ Connect your documentation to external services for seamless workflows.
     };
     ```
 
-    <Callout kind="info">
+    <Callout kind="info" collapsed="false">
       Generate a GitHub token with `repo` scope for authentication.
     </Callout>
   </Expandable>
-  <Expandable title="Slack Notifications">
+
+  <Expandable title="Slack Notifications" default-open="false">
     Receive alerts for new edits or comments.
 
     ```javascript
@@ -131,11 +139,13 @@ Connect your documentation to external services for seamless workflows.
   </Expandable>
 </ExpandableGroup>
 
-<Columns cols={2}>
-  <Card title="Advanced Theming" icon="brush" href="/docs/advanced-theme">
-    Dive into custom CSS and layouts.
+<Columns cols="2">
+  <Card title="Advanced Theming" href="/docs/advanced-theme" icon="brush" horizontal="false">
+    *Dive into custom CSS and layouts.*
   </Card>
-  <Card title="API Access" icon="api" href="/docs/api">
-    Programmatically manage permissions.
+
+  <Card title="API Access" href="/docs/api" icon="api" horizontal="false">
+    *Programmatically manage permissions.*
   </Card>
 </Columns>
+

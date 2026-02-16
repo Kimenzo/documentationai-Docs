@@ -1,20 +1,23 @@
 ---
 title: Welcome to Lorenzo Otieno Documentation
-description: An overview of the Lorenzo Otieno Documentation platform, designed as a default space for organizing and managing project documentation efficiently.
+description: >-
+  An overview of the Lorenzo Otieno Documentation platform, designed as a
+  default space for organizing and managing project documentation efficiently.
 ---
-
-## Platform Overview
+## <kbd>Platform Overview</kbd>
 
 Lorenzo Otieno Documentation provides a centralized space to organize, manage, and publish your project documentation. You create structured pages, embed code examples, and collaborate seamlessly with your team. This default documentation hub supports MDX for rich, interactive content including components like cards, steps, and tabs.
 
-<Columns cols={3}>
-  <Card title="Interactive Components" icon="components" href="/docs/components">
+<Columns cols="3">
+  <Card title="Interactive Components" href="/docs/components" icon="components" horizontal="false">
     Build engaging docs with `<Steps>`, `<Tabs>`, and `<Callout>` elements.
   </Card>
-  <Card title="Version Control" icon="git-branch" href="/docs/versioning">
+
+  <Card title="Version Control" href="/docs/versioning" icon="git-branch" horizontal="false">
     Track changes and maintain version history effortlessly.
   </Card>
-  <Card title="Search & Navigation" icon="search" href="/docs/search">
+
+  <Card title="Search & Navigation" href="/docs/search" icon="search" horizontal="false">
     Find content quickly with full-text search and intuitive sidebar navigation.
   </Card>
 </Columns>
@@ -26,57 +29,63 @@ You gain efficiency through customizable themes, real-time previews, and seamles
 <Tabs>
   <Tab title="Developers" icon="code">
     Embed executable code snippets and API references directly in your docs.
-    
-    <Callout kind="tip">
+
+    <Callout kind="tip" collapsed="false">
       Use `CodeGroup` for multi-language examples to reach broader audiences.
     </Callout>
   </Tab>
-  <Tab title="Product Managers" icon="layout" href="#">
+
+  <Tab title="Product Managers" icon="layout">
     Organize roadmaps, changelogs, and feature specs in one collaborative space.
   </Tab>
+
   <Tab title="Teams" icon="users">
     Enable role-based access and comments for streamlined reviews.
   </Tab>
 </Tabs>
 
-| Benefit | Description | Impact |
-|---------|-------------|--------|
-| Fast Publishing | Deploy changes in seconds | Reduces documentation lag |
+| Benefit         | Description                              | Impact                        |
+| --------------- | ---------------------------------------- | ----------------------------- |
+| Fast Publishing | Deploy changes in seconds                | Reduces documentation lag     |
 | Customizable UI | Brand with your colors (e.g., `#3B82F6`) | Matches your product identity |
-| Analytics | Track page views | Optimize content strategy |
+| Analytics       | Track page views                         | Optimize content strategy     |
 
 ## Quick Start
 
 Set up your documentation space in minutes. Follow these steps to create your first page.
 
 <Steps>
-  <Step title="Create Account" icon="user-plus">
+  <Step title="Create Account" icon="user-plus" title-type="p">
     Sign up at the dashboard and verify your email.
   </Step>
-  <Step title="Initialize Project" icon="folder-plus">
+
+  <Step title="Initialize Project" icon="folder-plus" title-type="p">
     Run the setup command in your terminal.
-    
-    <CodeGroup tabs="npm,yarn">
+
+    <CodeGroup show-lines="true" tabs={[]}>
       ```bash
       npm create lorenzo-docs@latest my-project
       ```
+
       ```bash
       yarn create lorenzo-docs my-project
       ```
     </CodeGroup>
   </Step>
-  <Step title="Add First Page" icon="file-plus">
+
+  <Step title="Add First Page" icon="file-plus" title-type="p">
     Edit `introduction.mdx` with your YAML frontmatter and content.
   </Step>
-  <Step title="Preview & Deploy" icon="rocket">
+
+  <Step title="Preview & Deploy" icon="rocket" title-type="p">
     Start the dev server: `npm run dev`, then deploy with `npm run deploy`.
   </Step>
 </Steps>
 
-<Expandable title="Advanced Configuration" default-open="false">
+<Expandable title="Advanced Configuration" default-open="true">
   Customize your site by editing `lorenzo.config.js`:
-  
-  ```javascript
+
+  ```go
   export default {
     brandColor: '#3B82F6',
     nav: [
@@ -85,10 +94,11 @@ Set up your documentation space in minutes. Follow these steps to create your fi
     ]
   };
   ```
-  
+
   Integrate with GitHub for automatic deployments on push.
 </Expandable>
 
-<Callout kind="success">
+<Callout kind="success" collapsed="false">
   Ready to dive deeper? Explore the [components guide](/docs/components) next.
 </Callout>
+

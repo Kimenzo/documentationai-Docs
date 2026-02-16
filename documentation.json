@@ -83,5 +83,14 @@
         ]
       }
     ]
+  },
+  "template": "atlas",
+  "navbar": {
+    "actions": {
+      "primary": {
+        "title": "",
+        "link": "H"
+      }
+    }
   }
 }
