@@ -1,105 +1,217 @@
 ---
-title: Core Concepts
-description: Understand the fundamental features and capabilities of the documentation platform for effective project management.
+title: Core concepts
+description: Learn how Genesis storybooks, workspaces, plans, and AI generation work so you can create and refine illustrated ebooks with confidence.
 ---
 
-## Document Organization
+## Storybooks and projects
 
-Lorenzo Otieno Documentation provides flexible ways to structure your project docs. You organize content into folders, pages, and nested hierarchies for intuitive navigation.
+A storybook in Genesis is a complete illustrated ebook: text, pages, and images generated and designed together as one project.
 
-<Columns cols={3}>
-  <Card title="Folders" icon="folder" href="#">
-    Group related pages into folders. Create subfolders for deep hierarchies like `guides/advanced/`.
+Every time you start a new idea in Genesis, you create a project that becomes a storybook. The project keeps everything in one place: your storyline, scenes, page layouts, and final exports.
+
+<Callout kind="info">
+  Think of a storybook as a digital picture book: it has a beginning, middle, and end, broken into pages with matching illustrations.
+</Callout>
+
+Storybooks have two key limits that depend on your plan:
+
+- **How many ebooks you create each month**
+- **How many pages each book can contain**
+
+If you reach either limit, Genesis prompts you to upgrade or wait until your monthly quota resets.
+
+## Core workspaces in Genesis
+
+Genesis organizes your creative flow into focused workspaces. Each workspace handles a different stage of turning your idea into a finished storybook.
+
+<Columns cols={4}>
+  <Card title="Creation Canvas" icon="zap" href="#creation-canvas">
+    Explore ideas and generate the first version of your storybook. Set themes, characters, and style before Genesis builds the structure.
   </Card>
-  <Card title="Frontmatter" icon="file-text" href="#">
-    Add YAML frontmatter to pages for metadata like `title` and `description`.
+  <Card title="Smart Editor" icon="edit" href="#smart-editor">
+    Rewrite, expand, or shorten scenes with AI assistance. Fine-tune pacing, tone, and reading level page by page.
   </Card>
-  <Card title="Navigation" icon="menu" href="#">
-    Auto-generate sidebars from folder structure for seamless browsing.
+  <Card title="Storybook Viewer" icon="book-open" href="#storybook-viewer">
+    Read your storybook like a finished ebook. Flip through pages, check flow, and spot anything you want to adjust.
+  </Card>
+  <Card title="Visual Studio" icon="monitor" href="#visual-studio">
+    Polish illustrations and layouts. Adjust compositions, regenerate images, and align the visuals with your story.
   </Card>
 </Columns>
 
-Use a clear folder structure from the start:
+Each workspace works on the same underlying project, so changes you make in one place carry through to the others.
 
-<Steps>
-  <Step title="Create Root Folders" icon="folder-plus">
-    Set up top-level folders like `core-concepts/`, `guides/`, and `api/`.
-  </Step>
-  <Step title="Add Pages" icon="file-plus">
-    Create `.mdx` files inside folders with proper frontmatter.
-  </Step>
-  <Step title="Link Pages" icon="link">
-    Use relative links like `[Guides](/guides/intro)` for navigation.
-  </Step>
-</Steps>
+### Creation Canvas
 
-## Collaboration Features
+Creation Canvas is where you shape the foundation of your storybook before Genesis starts generating pages.
 
-Collaborate with your team using built-in tools. Invite members, assign roles, and track changes in real-time.
+Use it to:
+
+- Define your **main characters**, setting, and tone.
+- Choose the **visual style** you want for illustrations.
+- Outline the **core plot** or key scenes you care about most.
+
+When you confirm your setup, Genesis uses this information to architect the story structure and decide how many pages to create within your plan limits.
+
+### Smart Editor vs Storybook Viewer
+
+Smart Editor and Storybook Viewer both show your story, but they serve different purposes.
 
 <Tabs>
-  <Tab title="Team Invites" icon="users">
-    Send invites via email or link. Set roles: Admin, Editor, Viewer.
+  <Tab title="Smart Editor" icon="edit-3">
+    Smart Editor is the workspace where you actively change the story text.
 
-    ```bash
-    # Example invite command (CLI)
-    lorenzo invite team@example.com --role=editor
-    ```
-  </Tab>
-  <Tab title="Comments" icon="message-circle">
-    Add inline comments on pages. Resolve threads as you review.
+    Use Smart Editor to:
 
-    <Callout kind="tip">
-      Use `@mentions` like `@john` to notify teammates directly.
-    </Callout>
+    - Rewrite sentences or paragraphs with AI help.
+    - Adjust reading level for different age groups.
+    - Add or remove details in specific scenes.
+    - Ask Genesis to continue or shorten a section.
+
+    When you edit in Smart Editor, Genesis keeps the story aligned with your existing structure so you do not break the overall flow.
   </Tab>
-  <Tab title="Real-time Edits" icon="edit-3">
-    Multiple users edit simultaneously with live previews and conflict resolution.
+  <Tab title="Storybook Viewer" icon="book-open">
+    Storybook Viewer is the workspace where you experience the storybook as a reader.
+
+    Use Storybook Viewer to:
+
+    - Flip through pages in order and feel the pacing.
+    - Check that illustrations match the text on every page.
+    - Review the full story before exporting or sharing.
+
+    Switch into Storybook Viewer when you want to evaluate your storybook as a finished product, then jump back to Smart Editor for adjustments.
   </Tab>
 </Tabs>
 
-## Versioning Basics
+<Callout kind="tip">
+  Review new storybooks in Storybook Viewer first. When you notice something to improve, open that page in Smart Editor to refine the text or structure.
+</Callout>
 
-Version your documentation to maintain history and publish updates safely. Use semantic versioning and draft previews.
+### Visual Studio
 
-<CodeGroup tabs="Git Integration,Built-in Drafts">
-  ```bash
-  # Git-based versioning
-  git add docs/core-concepts.mdx
-  git commit -m "Update collaboration section"
-  git push origin main
-  ```
-  ```yaml
-  # Draft frontmatter example
-  ---
-  title: Core Concepts (Draft)
-  draft: true
-  version: "1.2.0"
-  ---
-  ```
-</CodeGroup>
+Visual Studio focuses on the look and feel of your storybook. While Smart Editor works on words, Visual Studio works on images and layouts.
 
-| Feature | Git Integration | Built-in Drafts |
-|---------|-----------------|-----------------|
-| History | Full commit log | Page-level snapshots |
-| Previews | Branch previews | Live draft URLs |
-| Rollback | `git revert` | One-click restore |
+In Visual Studio you can:
 
-<Expandable title="Advanced Versioning Workflow" default-open="false">
+- Regenerate illustrations while keeping the same scene idea.
+- Nudge style consistency across the book so characters look the same.
+- Adjust the balance between text and image on each page.
 
-```mermaid
-graph TD
-    A[Draft Changes] --> B[Preview Draft]
-    B --> C{Approve?}
-    C -- Yes --> D[Publish v1.2.0]
-    C -- No --> A
-    D --> E[Archive Previous]
-```
+Changes you make in Visual Studio update the same storybook you see in Storybook Viewer, so you always review the latest visuals.
 
-Tag releases with changelogs for transparency.
+## Plans, limits, and exports
+
+Genesis plans control how much you can create and how your exports look.
+
+At a high level, every plan includes:
+
+- A **monthly limit on ebooks** you can generate.
+- A **maximum number of pages per book**, which shapes how detailed your stories can be.
+- **Export options**, including watermark rules and file formats.
+
+<Tabs>
+  <Tab title="Free tier" icon="minus">
+    The free tier is designed for exploring Genesis and creating your first storybooks.
+
+    You typically get:
+
+    - A small number of ebooks each month.
+    - A cap on pages per book so generation stays focused.
+    - Exports that include a visible watermark on each page.
+
+    Some export buttons in the interface lead you to the Pricing or Upgrade screen, where you can see what additional formats and limits are available.
+  </Tab>
+  <Tab title="Creator tier" icon="plus">
+    Creator and higher tiers are designed for regular use and cleaner publishing.
+
+    With these plans you:
+
+    - Unlock more ebooks per month to support ongoing projects.
+    - Increase the maximum pages per book for richer stories.
+    - Remove watermarks from exports and unlock formats like ePub.
+
+    When you upgrade, existing storybooks benefit from the new export options and page limits going forward.
+  </Tab>
+</Tabs>
+
+<Callout kind="info">
+  If Genesis shows a Pricing or Upgrade screen when you try to export, you have likely hit a monthly or page limit, or you are accessing a format reserved for paid plans.
+</Callout>
+
+## How AI generation works
+
+Generation is the process where Genesis turns your ideas and settings into a complete storybook with pages and illustrations.
+
+When you start generation from Creation Canvas, Genesis typically:
+
+1. Analyzes your prompt, characters, and style choices.
+2. Designs a suitable story structure within your page limits.
+3. Writes text for each page.
+4. Creates matching illustrations for each scene.
+5. Builds a cover that fits the story and visual style.
+
+During this process, you see status messages that show where Genesis is in the pipeline.
+
+### Understanding progress messages
+
+While Genesis is working, you may see messages like:
+
+- `Architecting story structure…`
+- `Painting page 3 of 12…`
+- `Designing the perfect cover…`
+
+Use these as a live map of what is happening:
+
+- **Architecting story structure…** means Genesis is deciding how many pages the story needs and what happens on each page.
+- **Painting page X of Y…** means Genesis is generating or refining the illustration for that specific page. The `Y` value respects your plan's maximum pages per book.
+- **Designing the perfect cover…** means Genesis is creating or improving the front cover artwork after it understands the full story.
+
+<Callout kind="tip">
+  If progress pauses briefly on a step, wait for the message to change instead of restarting. Restarting generation discards the current attempt and starts a fresh one, which still counts toward your monthly limits.
+</Callout>
+
+### What happens when generation finishes
+
+Once generation completes successfully:
+
+- Your new storybook appears in your library.
+- You can open it in **Storybook Viewer** to read it end to end.
+- You can move into **Smart Editor** or **Visual Studio** to refine text or visuals.
+- If your plan allows, you can export the storybook without watermarks in formats like ePub.
+
+Genesis keeps the generated structure so future edits stay aligned with the original flow, even as you refine details.
+
+## Advanced: Regenerating parts of a storybook
+
+<Expandable title="Fine-tuning pages without starting over" default-open="false">
+
+Sometimes you like most of what Genesis created, but one part of the storybook does not feel right. Instead of regenerating the entire book, focus on specific pages or sections.
+
+You can:
+
+- Use **Smart Editor** on a single page to adjust the text while keeping the rest of the story intact.
+- Ask Genesis to regenerate an illustration in **Visual Studio** if one image does not match your vision.
+- Keep the overall story structure from the original `Architecting story structure…` phase, while only changing a few key moments.
+
+This approach uses fewer generation credits, stays within your plan limits more efficiently, and gives you tighter control over your final storybook.
 
 </Expandable>
 
-<Callout kind="info">
-  Enable versioning in project settings to unlock draft previews and rollback.
-</Callout>
+<Columns cols={2}>
+  <Card
+    title="Get oriented"
+    href="/introduction"
+    icon="home"
+    cta="Read the introduction"
+  >
+    See how Genesis fits together from first idea to finished export.
+  </Card>
+  <Card
+    title="Create your first storybook"
+    href="/quickstart"
+    icon="rocket"
+    cta="Open the quickstart"
+  >
+    Follow a guided flow to generate and refine your first illustrated ebook.
+  </Card>
+</Columns>

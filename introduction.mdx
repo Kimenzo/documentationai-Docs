@@ -1,104 +1,208 @@
 ---
-title: Welcome to Lorenzo Otieno Documentation
-description: >-
-  An overview of the Lorenzo Otieno Documentation platform, designed as a
-  default space for organizing and managing project documentation efficiently.
+title: Genesis introduction
+description: Overview of the Genesis React and Vite app for AI visual storytelling, including core features, integrations, and how to run it locally.
 ---
-## <kbd>Platform Overview</kbd>
 
-Lorenzo Otieno Documentation provides a centralized space to organize, manage, and publish your project documentation. You create structured pages, embed code examples, and collaborate seamlessly with your team. This default documentation hub supports MDX for rich, interactive content including components like cards, steps, and tabs.
+## What is Genesis?
 
-<Columns cols="3">
-  <Card title="Interactive Components" href="/docs/components" icon="components" horizontal="false">
-    Build engaging docs with `<Steps>`, `<Tabs>`, and `<Callout>` elements.
-  </Card>
+Genesis is a React and Vite single-page app for AI-powered visual storytelling and storybook generation. It runs entirely client-side and orchestrates multiple AI providers to turn text prompts into structured, illustrated story experiences.
 
-  <Card title="Version Control" href="/docs/versioning" icon="git-branch" horizontal="false">
-    Track changes and maintain version history effortlessly.
-  </Card>
+Genesis does not expose a backend HTTP API or server layer. All data and AI calls happen from the browser using client-side SDKs and provider APIs.
 
-  <Card title="Search & Navigation" href="/docs/search" icon="search" horizontal="false">
-    Find content quickly with full-text search and intuitive sidebar navigation.
-  </Card>
-</Columns>
+<Callout kind="info">
 
-## Key Benefits
+Genesis is a static single-page application. You deploy it as a static site (for example, on Vercel) with rewrites pointing all routes to `index.html`.
 
-You gain efficiency through customizable themes, real-time previews, and seamless integrations. Compare benefits across user roles using the tabs below.
+</Callout>
 
-<Tabs>
-  <Tab title="Developers" icon="code">
-    Embed executable code snippets and API references directly in your docs.
+## Core capabilities
 
-    <Callout kind="tip" collapsed="false">
-      Use `CodeGroup` for multi-language examples to reach broader audiences.
-    </Callout>
-  </Tab>
+Genesis focuses on helping you go from an idea to a visual story using AI for both text and images.
 
-  <Tab title="Product Managers" icon="layout">
-    Organize roadmaps, changelogs, and feature specs in one collaborative space.
-  </Tab>
+- **Story generation** — Use Gemini or Grok (via OpenRouter) to generate plot outlines, scenes, and narrative text.
+- **Visual storytelling** — Generate illustrations for scenes with the Bytez image API and combine them with the narrative.
+- **Persistence with Supabase** — Store projects, stories, and assets using Supabase auth and database/storage.
+- **Payments with Paystack** — Gate premium features and manage pricing using Paystack on the client.
 
-  <Tab title="Teams" icon="users">
-    Enable role-based access and comments for streamlined reviews.
-  </Tab>
-</Tabs>
+### How Genesis is wired together
 
-| Benefit         | Description                              | Impact                        |
-| --------------- | ---------------------------------------- | ----------------------------- |
-| Fast Publishing | Deploy changes in seconds                | Reduces documentation lag     |
-| Customizable UI | Brand with your colors (e.g., `#3B82F6`) | Matches your product identity |
-| Analytics       | Track page views                         | Optimize content strategy     |
-
-## Quick Start
-
-Set up your documentation space in minutes. Follow these steps to create your first page.
+These integrations work together inside the browser to power the app.
 
 <Steps>
-  <Step title="Create Account" icon="user-plus" title-type="p">
-    Sign up at the dashboard and verify your email.
+  <Step title="Authenticate and load user data" icon="users">
+
+    Genesis uses Supabase in the browser for authentication and project storage. When you sign in, it fetches your saved stories and assets from Supabase tables and storage buckets.
+
   </Step>
 
-  <Step title="Initialize Project" icon="folder-plus" title-type="p">
-    Run the setup command in your terminal.
+  <Step title="Generate narrative with LLMs" icon="code">
 
-    <CodeGroup show-lines="true" tabs={[]}>
-      ```bash
-      npm create lorenzo-docs@latest my-project
-      ```
+    For each story or scene, Genesis sends prompts to Gemini or Grok through OpenRouter using the configured API keys. The app turns model responses into structured story segments and metadata.
 
-      ```bash
-      yarn create lorenzo-docs my-project
-      ```
-    </CodeGroup>
   </Step>
 
-  <Step title="Add First Page" icon="file-plus" title-type="p">
-    Edit `introduction.mdx` with your YAML frontmatter and content.
+  <Step title="Create images with Bytez" icon="image">
+
+    Once the narrative is ready, Genesis calls the Bytez image API from the client to create illustrations that match each scene. It then stores URLs or image references in Supabase.
+
   </Step>
 
-  <Step title="Preview & Deploy" icon="rocket" title-type="p">
-    Start the dev server: `npm run dev`, then deploy with `npm run deploy`.
+  <Step title="Handle billing with Paystack" icon="credit-card">
+
+    When a user upgrades or triggers a paid action, the app talks to Paystack using the public key to handle checkout flows and reflect access state in the UI.
+
   </Step>
 </Steps>
 
-<Expandable title="Advanced Configuration" default-open="true">
-  Customize your site by editing `lorenzo.config.js`:
+<Callout kind="tip">
 
-  ```go
-  export default {
-    brandColor: '#3B82F6',
-    nav: [
-      { title: 'Home', href: '/' },
-      { title: 'API', href: '/api' }
-    ]
-  };
-  ```
+Use environment-specific keys (for example, different Supabase and Paystack projects) so you can experiment locally without affecting production data.
 
-  Integrate with GitHub for automatic deployments on push.
-</Expandable>
-
-<Callout kind="success" collapsed="false">
-  Ready to dive deeper? Explore the [components guide](/docs/components) next.
 </Callout>
 
+## Key integrations and environment variables
+
+Genesis reads its configuration from Vite environment variables. Define these in `.env.local` (based on `.env.example`) before running the app.
+
+<Columns cols={2}>
+  <Card title="Supabase (auth and storage)" href="/configuration" icon="database">
+
+    - `VITE_SUPABASE_URL`
+    - `VITE_SUPABASE_ANON_KEY`
+
+    Supabase provides authentication, database, and file storage directly from the browser.
+
+  </Card>
+
+  <Card title="LLMs (Gemini and Grok)" href="/configuration" icon="zap">
+
+    - `VITE_GEMINI_API_KEY`
+    - `VITE_GROK_API_KEY`
+
+    These keys allow Genesis to send prompts to Gemini and Grok (via OpenRouter) for story and text generation.
+
+  </Card>
+</Columns>
+
+<Columns cols={2}>
+  <Card title="Images with Bytez" href="/configuration" icon="image">
+
+    - `VITE_BYTEZ_API_KEY`
+
+    Bytez powers image generation for scenes and story panels, returning URLs that the app stores and renders.
+
+  </Card>
+
+  <Card title="Payments with Paystack" href="/configuration" icon="credit-card">
+
+    - `VITE_PAYSTACK_PUBLIC_KEY`
+
+    The Paystack public key enables client-side checkout flows and pricing features.
+
+  </Card>
+</Columns>
+
+<Callout kind="info">
+
+All configuration keys use the `VITE_` prefix because Genesis is built with Vite. Vite exposes only variables starting with `VITE_` to the client bundle.
+
+</Callout>
+
+## Run Genesis locally
+
+Start a local development instance to explore the app and contribute changes.
+
+<Steps>
+  <Step title="Clone and install dependencies" icon="download">
+
+    Use your preferred Git client to clone the Genesis repository, then install dependencies:
+
+    <CodeGroup tabs="npm,yarn" show-lines={true}>
+
+      ```bash
+      npm install
+      ```
+
+      ```bash
+      yarn install
+      ```
+
+    </CodeGroup>
+
+  </Step>
+
+  <Step title="Configure environment variables" icon="settings">
+
+    Copy the example environment file and fill in the required Vite keys:
+
+    ```bash
+    cp .env.example .env.local
+    ```
+
+    Set values for:
+
+    - `VITE_SUPABASE_URL`
+    - `VITE_SUPABASE_ANON_KEY`
+    - `VITE_PAYSTACK_PUBLIC_KEY`
+    - `VITE_GEMINI_API_KEY`
+    - `VITE_GROK_API_KEY`
+    - `VITE_BYTEZ_API_KEY`
+
+  </Step>
+
+  <Step title="Start the Vite dev server" icon="play-circle">
+
+    Run the development server:
+
+    ```bash
+    npm run dev
+    ```
+
+    Vite starts on a local URL such as `http://localhost:5173`. Open that URL in your browser to interact with Genesis.
+
+  </Step>
+</Steps>
+
+<Callout kind="info">
+
+Deployment uses static hosting with a rewrite configuration (for example, `vercel.json`) that routes all paths back to `index.html`, preserving client-side routing.
+
+</Callout>
+
+## Where to go next
+
+Use these sections of the docs to go deeper into Genesis concepts, configuration, and changes over time.
+
+<Columns cols={3}>
+  <Card title="Quickstart" href="/quickstart" icon="rocket" cta="Run it now">
+
+    Follow a focused, end-to-end path to get Genesis running with your own keys and generate your first story.
+
+  </Card>
+
+  <Card title="Core concepts" href="/core-concepts" icon="book-open" cta="Understand the model">
+
+    Learn how stories, scenes, AI providers, and storage fit together so you can extend or adapt the app confidently.
+
+  </Card>
+
+  <Card title="Configuration and deployments" href="/configuration" icon="settings" cta="Tune the setup">
+
+    Review all available configuration options, environment variables, and deployment notes for static hosting.
+
+  </Card>
+</Columns>
+
+<Columns cols={2}>
+  <Card title="Release history" href="/changelog" icon="history">
+
+    Track feature additions, fixes, and breaking changes across Genesis versions to keep your deployment up to date.
+
+  </Card>
+
+  <Card title="Contributing" href="/managing-docs" icon="github">
+
+    Read guidelines for proposing changes, organizing docs, and keeping implementation and documentation in sync.
+
+  </Card>
+</Columns>

@@ -1,152 +1,168 @@
 ---
-title: Managing Your Documentation
-description: Step-by-step guidance on creating, structuring, and maintaining documentation within your projects.
+title: Managing your Genesis storybooks
+description: Learn where your Genesis storybooks live, how to open, edit, and delete them, and how to keep important versions safe over time.
 ---
 
-## Overview
+## Storybook library overview
 
-Lorenzo Otieno Documentation provides a flexible space to organize your project docs. You create pages, structure folders, and publish updates efficiently. Follow these guides to maintain clear, accessible documentation.
+Saved Genesis storybooks live in your personal library, visible as cards in the dashboard and Creation Canvas. Each card gives you a quick snapshot of the story so you can find and manage it easily.
 
-<Columns cols={3}>
-  <Card title="Create Pages" icon="file-plus" href="#">
-    Build new MDX pages quickly.
-  </Card>
-  <Card title="Folder Structures" icon="folder" href="#">
-    Organize content logically.
-  </Card>
-  <Card title="Publishing" icon="upload-cloud" href="#">
-    Deploy changes seamlessly.
-  </Card>
-</Columns>
+A storybook card typically shows:
 
-## Creating and Editing Pages
+- The **storybook title** so you can recognize it at a glance
+- A **cover image or thumbnail** representing the story
+- A short **description or tagline** if you added one
+- The **last updated time** so you know how recent the version is
 
-Start by creating new MDX files in your docs directory. Use your preferred editor to add frontmatter, headings, and components.
-
-<Steps>
-  <Step title="Create New File" icon="file-plus">
-    Navigate to the `docs/` folder and create `new-page.mdx`.
-
-    ```bash
-    mkdir -p docs/guides
-    touch docs/guides/quickstart.mdx
-    ```
-  </Step>
-  <Step title="Add Frontmatter" icon="edit-3">
-    Insert YAML frontmatter at the top.
-
-    ```mdx
-    ---
-    title: Quickstart Guide
-    description: Get started with Lorenzo Otieno.
-    ---
-    ```
-  </Step>
-  <Step title="Write Content" icon="pen-tool">
-    Add H2 headings and components. Start with `## Overview`.
-
-    <Callout kind="tip">
-      Always escape special characters like `{variable}` and `<Component>` with backticks in prose.
-    </Callout>
-  </Step>
-  <Step title="Preview Changes" icon="eye">
-    Use `npm run dev` to preview locally.
-
-    ```bash
-    npm run dev
-    ```
-  </Step>
-</Steps>
-
-## Organizing Folder Structures
-
-Structure your docs hierarchically for easy navigation. Use folders for categories like `guides/`, `api/`, and `reference/`.
-
-<Tabs>
-  <Tab title="Simple Project" icon="folder">
-    Flat structure for small projects.
-
-    ```plaintext
-    docs/
-    ├── intro.mdx
-    ├── quickstart.mdx
-    └── changelog.mdx
-    ```
-  </Tab>
-  <Tab title="Complex Project" icon="layers">
-    Nested folders for larger docs.
-
-    ```plaintext
-    docs/
-    ├── introduction/
-    │   └── overview.mdx
-    ├── guides/
-    │   ├── installation.mdx
-    │   └── deployment.mdx
-    └── api/
-        ├── endpoints.mdx
-        └── authentication.mdx
-    ```
-  </Tab>
-  <Tab title="Versioned Docs" icon="git-branch">
-    Maintain versions with branches.
-
-    ```plaintext
-    docs/
-    ├── v1/
-    │   └── reference.mdx
-    ├── v2/
-    │   └── reference.mdx
-    └── current.mdx
-    ```
-  </Tab>
-</Tabs>
+Cards are interactive: use them to open a storybook for reading, return to the Creation Canvas to edit it, or remove it from your library when you no longer need it.
 
 <Callout kind="info">
-  Limit nesting to 3 levels to avoid deep navigation paths.
+  Genesis saves changes to your storybooks to your account library. When you open a book from the dashboard or Creation Canvas, you always see the latest saved version.
 </Callout>
 
-## Publishing Workflows
+## Storybook card actions
 
-Publish updates via Git and your hosting platform. Automate with CI/CD for consistency.
+Every saved storybook appears as a card (SavedBookCard) with three main actions:
+
+- **Open/Read** (eye icon)
+- **Edit** (edit icon)
+- **Delete** (trash icon, with confirmation)
+
+Use these actions to move between reading, revising, and cleaning up your library.
+
+### Open or read a storybook
+
+Use the Open/Read action to view the current version of a storybook without changing it.
 
 <Steps>
-  <Step title="Commit Changes" icon="git-commit">
-    Stage and commit your MDX files.
-
-    ```bash
-    git add docs/
-    git commit -m "Add quickstart guide"
-    ```
+  <Step title="Find the storybook" icon="search">
+    Go to your dashboard or Creation Canvas and scroll through your saved storybooks until you see the card for the book you want to read.
   </Step>
-  <Step title="Push to Remote" icon="git-pull-request">
-    Push to your repository.
 
-    ```bash
-    git push origin main
-    ```
+  <Step title="Open the book" icon="eye">
+    Click the **eye icon** on the SavedBookCard.
+
+    You move into reading mode and can browse through the pages of your storybook.
   </Step>
-  <Step title="Deploy Automatically" icon="rocket">
-    Your platform deploys on push. Monitor the build logs.
+
+  <Step title="Confirm you have the right version" icon="check">
+    Check the title, cover, and any version details in the header.
+
+    If they match what you expect, you are reading the latest saved version from your library.
   </Step>
 </Steps>
 
-```mermaid
-graph TD
-    A[Edit MDX] --> B[Commit & Push]
-    B --> C[CI/CD Build]
-    C --> D[Deploy Live]
-    D --> E[Verify Site]
-```
+### Edit a storybook in the Creation Canvas
 
-<Expandable title="Advanced Publishing Tips" default-open="false">
-  Integrate webhooks for instant previews. Use environment variables like `{NEXT_PUBLIC_API_URL}` in code blocks.
+Use the Edit action to change text, images, or structure of an existing storybook.
 
-  | Workflow | Tool | Benefit |
-  |----------|------|---------|
-  | Manual | GitHub Pages | Simple setup |
-  | Automated | Vercel/Netlify | Fast deploys |
-  | Preview | Pull Requests | Team review |
-</Expandable>
+<Steps>
+  <Step title="Select the storybook to edit" icon="edit-3">
+    On the dashboard or in the Creation Canvas, locate the SavedBookCard for the story you want to update. Confirm the title and last updated time match the book you intend to change.
+  </Step>
 
-Maintain your docs regularly to keep them current and user-friendly.
+  <Step title="Enter edit mode" icon="pen-tool">
+    Click the **edit icon** on the card.
+
+    Genesis opens the storybook in the Creation Canvas with all existing pages and content loaded for editing.
+  </Step>
+
+  <Step title="Make your changes" icon="settings">
+    Update your story text, images, or structure as needed.
+
+    Genesis saves your changes to your account library, so when you come back to this card later, you see the updated version of the book.
+  </Step>
+</Steps>
+
+<Callout kind="tip">
+  Before making large changes (like rewriting chapters or changing the story ending), export or download a copy of your current story so you have a safe fallback version if you change your mind later.
+</Callout>
+
+### Delete a storybook from your library
+
+Use the Delete action when you are sure you no longer need a storybook in your library.
+
+<Steps>
+  <Step title="Locate the storybook to remove" icon="trash">
+    In the dashboard or Creation Canvas, find the SavedBookCard for the storybook you want to delete. Double-check the title and cover to avoid removing the wrong book.
+  </Step>
+
+  <Step title="Start deletion" icon="x-circle">
+    Click the **trash icon** on the card.
+
+    Genesis shows a confirmation prompt so you can confirm you really want to remove this storybook.
+  </Step>
+
+  <Step title="Confirm or cancel" icon="alert-triangle">
+    In the confirmation prompt, choose:
+
+    - **Confirm** to delete the storybook from your library.
+    - **Cancel** to keep the storybook and return to your library view.
+  </Step>
+</Steps>
+
+<Callout kind="alert">
+  Deletion is permanent. After you confirm the delete action, the storybook leaves your library and you cannot restore it from within Genesis. Export or save a copy before deleting if you might need the story later.
+</Callout>
+
+## Saving behavior and version safety
+
+Genesis keeps your storybooks tied to your account so that when you return to the dashboard or Creation Canvas, you see your saved library exactly where you left it.
+
+When you:
+
+- **Create a new storybook**, Genesis adds a new SavedBookCard to your library.
+- **Edit an existing storybook**, Genesis updates that card with your latest changes.
+- **Delete a storybook**, Genesis removes that card from the dashboard and Creation Canvas after you confirm the deletion prompt.
+
+To keep important versions safe:
+
+- **Export or download before big edits**  
+  If you plan to make major structural changes (new chapters, alternative endings, character rewrites), export your current storybook as a file (for example, PDF) first. That way you keep a snapshot of the current version outside Genesis.
+
+- **Create a new version from the Creation Canvas**  
+  If you want to explore a different direction but keep the original, start a new storybook in the Creation Canvas and base it on the content of your existing story. This gives you two separate cards in your library, each with its own evolution, without relying on a duplicate button.
+
+<Callout kind="tip">
+  Treat your library like a bookshelf: keep long-term favorites and final editions, and archive or export experimental drafts so you can always revisit them later.
+</Callout>
+
+## Troubleshooting storybook management
+
+<ExpandableGroup>
+
+  <Expandable title="My storybook disappeared from the dashboard" default-open="false">
+
+  - Confirm that you are **signed in with the same account** you used when you created the storybook.
+  - Check if someone with access to your account **deleted the storybook** earlier. Once deleted and confirmed, the book no longer appears in the library.
+  - Look through your list of storybooks for **similar titles or covers** in case you renamed the story or changed its cover during a previous edit.
+
+  If you still cannot find the storybook and you know it was recently available, capture details (title, approximate last edit time) and contact support so they can review your account history.
+
+  </Expandable>
+
+  <Expandable title="Delete failed or the storybook is still visible" default-open="false">
+
+  - Make sure you clicked **Confirm** in the deletion prompt. If you close the prompt or click Cancel, Genesis keeps the story in your library.
+  - Refresh your dashboard or Creation Canvas to load the latest state of your library.
+  - Try deleting the storybook again, ensuring you target the correct SavedBookCard.
+
+  If the card remains after several attempts and page refreshes, note the story title and any error messages you see and share them with support so they can investigate.
+
+  </Expandable>
+
+  <Expandable title="Edits are not showing up when I reopen the story" default-open="false">
+
+  - After editing in the Creation Canvas, **wait a moment** before closing the page to give Genesis time to save your changes to your library.
+  - Refresh the dashboard and then **open the storybook again** using the eye icon to confirm you are seeing the latest version.
+  - Verify that you are not editing a **different storybook** with a similar title while opening another one to read.
+
+  If your latest changes still do not appear, avoid further edits on that story for the moment and contact support with the story title and what content you expected to see.
+
+  </Expandable>
+
+</ExpandableGroup>
+
+## What’s next
+
+Use your Genesis library as the central place to read, refine, and curate your storybooks over time. Keep your most important stories backed up outside Genesis, and use clear titles and covers so your SavedBookCards stay easy to scan as your collection grows.
